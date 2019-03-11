@@ -1,22 +1,39 @@
-apply plugin: 'java'
-
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.0-beta05'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+    }
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    /*implementation 'com.google.auto.service:auto-service:1.0-rc2'
-    implementation 'com.squareup:javapoet:1.9.0'*/
-    //将定义注释的库添加到仅编译类路径。
-    //compileOnly'com.google.dagger ：dagger：version-number '
-    //将注释处理器依赖项添加到注释处理器类路径。
-    //annotationProcessor'com.google.dagger ：dagger-compiler：version-number '
-    // 用于生成Java文件的库  利用了annotationprocessor编译器，在编译期间创建的，用到这个的出名框架比如：Butter Knife、Glide  。
-    compileOnly 'com.squareup:javapoet:1.9.0'
-    compileOnly 'com.google.auto.service:auto-service:1.0-rc2'
+allprojects {
+    repositories {
+	mavenCentral()
+        google()
+        jcenter()
+	maven { url "https://jitpack.io" }
+    }
 }
 
-//由于Android目前不是完全支持Java 8的语言特性，会导致编译出错。这里将项目的源和目标兼容性值保留为 Java 7。
-sourceCompatibility = JavaVersion.VERSION_1_7
-targetCompatibility = JavaVersion.VERSION_1_7
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+//定义全局属性
+ext{
+    //项目的源和目标兼容性值保留为 Java 7
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+
+    compileSdkVersion = 28
+    buildToolsVersion = "28.0.3"
+    minSdkVersion = 23
+    targetSdkVersion = 28
+    versionCode = 1
+    versionName = "2.0.1"
+    supportVersion = "28.0.3"
+
+}
