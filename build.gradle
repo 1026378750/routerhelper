@@ -18,5 +18,5 @@ dependencies {
 }
 
 //由于Android目前不是完全支持Java 8的语言特性，会导致编译出错。这里将项目的源和目标兼容性值保留为 Java 7。
-sourceCompatibility = rootProject.ext.sourceCompatibility
-targetCompatibility = rootProject.ext.targetCompatibility
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
