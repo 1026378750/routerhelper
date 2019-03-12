@@ -12,10 +12,10 @@ buildscript {
 
 allprojects {
     repositories {
-	mavenCentral()
+        mavenCentral()
         google()
         jcenter()
-	maven { url "https://jitpack.io" }
+        maven { url "https://jitpack.io" }
     }
 }
 
@@ -27,4 +27,13 @@ ext{
     //项目的源和目标兼容性值保留为 Java 7
     sourceCompatibility = JavaVersion.VERSION_1_7
     targetCompatibility = JavaVersion.VERSION_1_7
+
+    compileSdkVersion = 28
+    buildToolsVersion = "28.0.3"
+    minSdkVersion = 23
+    targetSdkVersion = 28
+    versionCode = 1
+    versionName = "2.0.1"
+    supportVersion = "28.0.3"
+
 }
